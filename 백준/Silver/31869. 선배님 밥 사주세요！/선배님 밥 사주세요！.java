@@ -2,12 +2,12 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static class plan{
+    static class Plan {
         String name;
         int week;
         int day;
         int price;
-        public plan(String name, int week, int day, int price) {
+        public Plan(String name, int week, int day, int price) {
             this.name = name;
             this.week = week;
             this.day = day;
@@ -18,7 +18,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N =  Integer.parseInt(br.readLine());
 
-        Map<String, plan> plans = new HashMap<>();
+        Map<String, Plan> plans = new HashMap<>();
         StringTokenizer st;
         for(int i  = 0; i < N; i++){
             st = new StringTokenizer(br.readLine());
@@ -26,10 +26,9 @@ public class Main {
             int week = Integer.parseInt(st.nextToken());
             int day = Integer.parseInt(st.nextToken());
             int price = Integer.parseInt(st.nextToken());
-            plans.put(name, new plan(name, week, day, price));
+            plans.put(name, new Plan(name, week, day, price));
         }
-
-
+        
         for(int i  = 0; i < N; i++){
             st = new StringTokenizer(br.readLine());
             String name = st.nextToken();
@@ -41,8 +40,8 @@ public class Main {
         }
 
         boolean[][] visited = new boolean[11][7];
-        for(String name: plans.keySet()){
-            visited[plans.get(name).week][plans.get(name).day] = true;
+        for(Plan p : plans.values()){
+            visited[p.week][p.day] = true;
         }
 
         int cnt = 0;
